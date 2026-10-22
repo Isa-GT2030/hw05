@@ -41,24 +41,27 @@ ________________________________________________________________________________
 
 
 def get_letter():
-    
-   
-   # here I set up an infinite loop where letter is the input of "Give an single uppercase letter: "
+    """
+    Step 1: infinite loop where letter is the input of "Give an single uppercase letter: "
+    Step 2: if letter's length is greater than one, print "Error: it needs to be a single character." and re-runs the loop
+    Step 3: else if letter is not "A", "B", or "C", it prints "Error: You provided the wrong character." and re-runs the loop
+    Step 4: if neither of the above conditions are true, it returns letter and breaks out of the loop 
+          
+    """
     while True:
         letter = input("Give an single uppercase letter: ")
         
-        # if the length of letter is greater than one, it prints "Error: it needs to be a single character." and re-runs the loop
         if len(letter) >1:
             print("Error: it needs to be a single character.")
             continue
         
             
-        # else if letter is not "A", "B", or "C", it prints "Error: You provided the wrong character." and re-runs the loop
+    
         elif letter not in ["A", "B", "C"]:
             print("Error: You provided the wrong character.")
             continue
              
-        # if neither of the above conditions are true, than return letter and break out the loop       
+          
         else:
             return letter
             break
@@ -66,23 +69,28 @@ def get_letter():
         
             
 def get_digit():
+      
+    """
+    Step 1: Infinite loop where digit is the input of "Give an single number character: "
+    Step 2: if digit is not a digit, print "Error: your input should be only digits." and re-run the loop
+    Step 3: else if digit is not "1", "2", or "3", print "Error: a single digit needs to be in [1,3]." and re-run the loop
+    Step 4: if neither of the above conditions are true, then return digit and break out the loop
     
-    
-    # I sset up an infinite loop where digit is the input of "Give an single number character: "
+    """
     while True:
         digit = input("Give an single number character: ")
         
-        # if digit is not a digit, print "Error: your input should be only digits." and re-run the loop
+   
         if digit.isdigit() is False:
             print("Error: your input should be only digits.")
             continue
         
-        # else if digit is not "1", "2", or "3", print "Error: a single digit needs to be in [1,3]." and re-run the loop
+     
         elif digit not in ["1", "2", "3"]:
             print("Error: a single digit needs to be in [1,3].")
             continue
         
-        # if neither of the above conditions are true, then return digit and break out the loop
+    
         else:
             return digit
             break
@@ -99,19 +107,25 @@ def get_digit():
 def check_pattern(letter, digit, lst):
     
     
-    # print the required text
+    """
+    Step 1: Print ("Strings with the pattern:")
+    Step 2: for every word within the provided list, check if letter and digit are in the word
+    Step 3: if both letter and digit are in the word AND letter comes before digit, print the word
+    Step 4: if both letter and digit are NOT in the word OR letter comes after digit, break the loop
+    
+    """
     print("Strings with the pattern:")
     
     
-    # for every word within the provided list, check if letter and digit are in the word
+    
     for word in lst:
         if letter in word and digit in word:
             
-            # if both letter and digit are in the word AND letter comes before digit, print the word
+            
             if word.index(letter) < word.index(digit):
                 print(word, end=" ")
                 
-            # if both letter and digit are NOT in the word OR letter comes after digit, break the loop
+            
             else:
                 break
     print()
@@ -141,27 +155,30 @@ def main ():
     
     
     while True:
+        """
+        Step 1: set lst equal to st_list so I can call lst later
+        Step 2: run the get_letter() function and set letter equal to the result
+        Step 3: run the get_digit() function and set digit equal to the result
+        Step 4: run the check_pattern() function using the results of get_letter, get_digit, and the list of words
+        Step 5: set prompt equal to the input of ("Try Again? (y/n): ")
+        Step 6: if user enters "y", continue the loop
+        Step 7: if user enters anything but "y", break out of the loop
+        """
         
-        # I set lst equal to st_list so I can call lst later
         lst = st_list
         
-        # I run the get_letter() function and set letter equal to the result
         letter = get_letter()
         
-        # I run the get_digit() function and set digit equal to the result
         digit = get_digit()
         
-        # I run the check_pattern() function using the results of get_letter, get_digit, and the list of words
         check_pattern(letter, digit, lst)
         
-        # I set up the y/n prompt 
+         
         prompt = input("Try Again? (y/n): ")
-        
-        # if user enters "y", continue the loop
+
         if prompt == "y":
             continue
-        
-        # if user enters anything but "y", break out of the loop
+         
         else:
             break
         
