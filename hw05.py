@@ -1,25 +1,121 @@
 """
-Name: (put your name here)
-Peers: (add any collaborators)
-References: (anything you checked to solve this)
+Name: Isa Graham Torres
+Peers:
+References: Class notes and Thonny Assistant
 """
 
-def get_letter():
-    """ Add your own Docstring """
-    # remove the default return and add your code
-    return ""
+"""
+My Plan:
+_____________________________________________________________________________________________________
 
+get_letter()
+    
+    1. define letter as input("Give an single uppercase letter: ")
+    2. set up an infinite while loop so that:
+        a. if letter's length is greater than 1, it prints an error and restarts the loop with continue
+        b. if letter is not A, B, or C, it prints an error and restarts the code with continue
+        c. Else, It BREAKS out of the loop and returns letter
+    
+_____________________________________________________________________________________________________
+
+get_digit()
+
+
+    1. define digit as the input of("Give an single number character: ")
+    2. set up an infinite while loop so that:
+        a. if digit is not all digits, it prints an error and restarts the loop with continue
+        b. if digit is not equal to 1, 2, or 3, it prints and error and restarts the loop with continue
+        c. Else, it BREAKS out of the loop and returns digit
+    
+_____________________________________________________________________________________________________
+check_pattern()
+    
+ 
+    1. print("Strings with the pattern:")
+    2. set up a for loop so that:
+        a. if a word in list contains letter before digit, print the word
+        b. if a word in list contains digit before letter, don't print the word
+        c. if a word in list contains letter before digit more than once, print the word once
+_____________________________________________________________________________________________________
+"""
+
+
+def get_letter():
+    
+   
+   # here I set up an infinite loop where letter is the input of "Give an single uppercase letter: "
+    while True:
+        letter = input("Give an single uppercase letter: ")
+        
+        # if the length of letter is greater than one, it prints "Error: it needs to be a single character." and re-runs the loop
+        if len(letter) >1:
+            print("Error: it needs to be a single character.")
+            continue
+        
+            
+        # else if letter is not "A", "B", or "C", it prints "Error: You provided the wrong character." and re-runs the loop
+        elif letter not in ["A", "B", "C"]:
+            print("Error: You provided the wrong character.")
+            continue
+             
+        # if neither of the above conditions are true, than return letter and break out the loop       
+        else:
+            return letter
+            break
+        
+        
+            
 def get_digit():
-    """ Add your own Docstring """
-    # remove the default return and add your code
-    return 0
+    
+    
+    # I sset up an infinite loop where digit is the input of "Give an single number character: "
+    while True:
+        digit = input("Give an single number character: ")
+        
+        # if digit is not a digit, print "Error: your input should be only digits." and re-run the loop
+        if digit.isdigit() is False:
+            print("Error: your input should be only digits.")
+            continue
+        
+        # else if digit is not "1", "2", or "3", print "Error: a single digit needs to be in [1,3]." and re-run the loop
+        elif digit not in ["1", "2", "3"]:
+            print("Error: a single digit needs to be in [1,3].")
+            continue
+        
+        # if neither of the above conditions are true, then return digit and break out the loop
+        else:
+            return digit
+            break
+            
+            
+    
+        
+        
+        
+        
+            
 
 
 def check_pattern(letter, digit, lst):
-    """ Add your own Docstring """
-    # remove the default pass and add your code
-    pass
-
+    
+    
+    # print the required text
+    print("Strings with the pattern:")
+    
+    
+    # for every word within the provided list, check if letter and digit are in the word
+    for word in lst:
+        if letter in word and digit in word:
+            
+            # if both letter and digit are in the word AND letter comes before digit, print the word
+            if word.index(letter) < word.index(digit):
+                print(word, end=" ")
+                
+            # if both letter and digit are NOT in the word OR letter comes after digit, break the loop
+            else:
+                break
+    print()
+            
 
 #  The function main is INCOMPLETE, you must finish it
 # before you submit
@@ -41,8 +137,36 @@ def main ():
     #          IF the user replies with anything else, the loop ends
     # ADD YOUR CODE UNDER THIS LINE
     # -------------------------------------------------
+    
+    
+    
+    while True:
+        
+        # I set lst equal to st_list so I can call lst later
+        lst = st_list
+        
+        # I run the get_letter() function and set letter equal to the result
+        letter = get_letter()
+        
+        # I run the get_digit() function and set digit equal to the result
+        digit = get_digit()
+        
+        # I run the check_pattern() function using the results of get_letter, get_digit, and the list of words
+        check_pattern(letter, digit, lst)
+        
+        # I set up the y/n prompt 
+        prompt = input("Try Again? (y/n): ")
+        
+        # if user enters "y", continue the loop
+        if prompt == "y":
+            continue
+        
+        # if user enters anything but "y", break out of the loop
+        else:
+            break
+        
 
-    # Your code Here
+
 
     # -------------------------------------------------
     # No need to modify anything Below this line
